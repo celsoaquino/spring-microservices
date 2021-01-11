@@ -23,8 +23,8 @@ public class WorkerResource {
 
     private static Logger logger = LoggerFactory.getLogger(WorkerResource.class);
 
-    @Value("${test.config}")
-    private String testConfig;
+    /*@Value("${test.config}")
+    private String testConfig;*/
 
     @Autowired
     private Environment env;
@@ -34,7 +34,7 @@ public class WorkerResource {
 
     @GetMapping("/configs")
     public ResponseEntity<Void> getConfig() {
-        logger.info("CONFIG = " + testConfig);
+       // logger.info("CONFIG = " + testConfig);
         return ResponseEntity.noContent().build();
     }
 
@@ -54,9 +54,7 @@ public class WorkerResource {
             e.printStackTrace();
         }*/
 
-
         logger.info("PORT = " + env.getProperty("local.server.port"));
-
 
         Worker obj = workerRepository.findById(id).get();
         return ResponseEntity.ok(obj);
